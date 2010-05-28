@@ -32,7 +32,6 @@ Marty Haught
 * Measuring
   * actionable metrics
   * split testing
-  * net promoter score  
 
 * Delivering Fast
   * small batches
@@ -45,7 +44,7 @@ Marty Haught
 
 There is no required preparation for this tutorial.  You may wish to discuss details of your own projects as well as incorporate some of these techniques into your projects during the tutorial.  You'll probably get more value doing so, thus having your projects buildable on your local environment is a first step.
 
-I have not finalized the exercises yet so I can't definitely say what you'll need to have installed to work with the example code.  For starters make sure you can run Rails 2.3 applications.  I will update this section once all of it has been finalized.
+The exercises will use a demo Rails application that will be stored in this git repo.  You are not required to run the app but if you wish to do so please make sure you can run Rails 2.3.5 and have mysql installed.  I will vendor the remaining gems.  One optional 'branch' will require Redis for use of Vanity.  Again, this is not required.  I will be demonstrating these on my own machine and server.  Only if you want to build on your laptop and play with the code should you install these.
 
 
 ## Resources
