@@ -1,0 +1,21 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: flingr_dev
+  username: flingr
+  password: open4me
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: flingr_test
+  username: flingr
+  password: open4me
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: flingr_prod
+  username: flingr
+  password: open4me
+

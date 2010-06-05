@@ -1,0 +1,26 @@
+<% score = experiment.score %>
+<table>
+  <caption>
+    <%= experiment.conclusion(score).join(" ") %></caption>
+  <% score.alts.each do |alt| %>
+    <tr class="<%= "choice" if score.choice == alt %>">
+      <td class="option"><%= alt.name.gsub(/^o/, "O") %>:</td>
+      <td class="value"><code><%=h alt.value.to_s %></code></td>
+      <td>
+        <%= "%.1f%%" % [alt.conversion_rate * 100] %>
+        <%= "(%d%% better than %s)" % [alt.difference, score.least.name] if alt.difference && alt.difference >= 1 %>
+      </td>
+      <td class="action">
+        <% if experiment.active? && respond_to?(:url_for) %>
+          <% if experiment.showing?(alt) %>
+            showing
+          <% else %>
+            <a class="button chooses" title="Show me this alternative from now on" href="#"
+              data-id="<%= experiment.id %>" data-url="<%= url_for(:action=>:chooses, :e=>experiment.id, :a=>alt.id) %>">show</a>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%=  %>

@@ -1,0 +1,30 @@
+<% form_for @fling do |f| %>
+  <%= f.error_messages %>
+  <h4>What?</h4>
+  <div class="payload">
+    <ul>
+      <% @payloads.each do |p| %>
+      <li>
+        <%= f.radio_button :payload_id, p.id %>
+        <%= p.name %>
+        <div class="image">
+          <%= image_tag p.image_url, :size => "80x80" %>
+        </div>
+      </li>
+      <% end %>
+    </ul>  
+    <br class="clear">  
+  </div>
+  <h4 class="clear">Who?</h4>
+  <div class="right">
+    <p>
+      <%= f.label :target_name, "Friend's name" %>:
+      <%= f.text_field :target_name %>
+    </p>
+    <p>
+      <%= f.label :target_email, "Friend's email" %>:
+      <%= f.text_field :target_email %>
+    </p>
+    <p><%= f.submit "Fling!" %></p>
+  </div>
+<% end %>

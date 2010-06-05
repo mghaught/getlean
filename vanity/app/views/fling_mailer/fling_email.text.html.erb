@@ -1,0 +1,5 @@
+<p><%= @fling.flinger.name %> flung <%= @fling.payload.name %> at you <%= " saying #{@fling.message}" unless @fling.message.blank? %>!</p>
+
+<p>See for yourself: <%= fling_url(@fling) %></p>
+
+<p>Fling back by visiting: <%= new_fling_url(:target_id => @fling.flinger) %></p>

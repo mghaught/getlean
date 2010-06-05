@@ -1,0 +1,18 @@
+<div class="fling_result">
+  <%= @fling.flinger.name %> flung <%= @fling.payload.name %> at <%= @fling.target_name %>
+  <% unless @fling.message.blank? %>
+    saying <%= @fling.message %>
+  <% end %>
+  
+  <div class="image">
+    <%= image_tag @fling.payload.image_url %>
+  </div>  
+</div>
+
+
+<% unless @fling.flinger == current_user %>
+<div class="fling_back fling_button">
+   <%= link_to "Fling Back", new_fling_url(:target_id => @fling.flinger) %>
+</div>
+<% end %>
+

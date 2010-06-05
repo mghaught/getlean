@@ -1,0 +1,171 @@
+--- !ruby/object:Gem::Specification 
+name: vanity
+version: !ruby/object:Gem::Version 
+  prerelease: false
+  segments: 
+  - 1
+  - 3
+  - 0
+  version: 1.3.0
+platform: ruby
+authors: 
+- Assaf Arkin
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-03-01 00:00:00 -07:00
+default_executable: vanity
+dependencies: []
+
+description: Mirror, mirror on the wall ...
+email: assaf@labnotes.org
+executables: 
+- vanity
+extensions: []
+
+extra_rdoc_files: 
+- README.rdoc
+- CHANGELOG
+files: 
+- bin/vanity
+- lib/vanity/backport.rb
+- lib/vanity/commands/list.rb
+- lib/vanity/commands/report.rb
+- lib/vanity/commands.rb
+- lib/vanity/experiment/ab_test.rb
+- lib/vanity/experiment/base.rb
+- lib/vanity/frameworks/rails.rb
+- lib/vanity/helpers.rb
+- lib/vanity/metric/active_record.rb
+- lib/vanity/metric/base.rb
+- lib/vanity/metric/google_analytics.rb
+- lib/vanity/mock_redis.rb
+- lib/vanity/playground.rb
+- lib/vanity/templates/_ab_test.erb
+- lib/vanity/templates/_experiment.erb
+- lib/vanity/templates/_experiments.erb
+- lib/vanity/templates/_metric.erb
+- lib/vanity/templates/_metrics.erb
+- lib/vanity/templates/_report.erb
+- lib/vanity/templates/flot.min.js
+- lib/vanity/templates/jquery.min.js
+- lib/vanity/templates/vanity.css
+- lib/vanity/templates/vanity.js
+- lib/vanity.rb
+- vendor/cache/actionmailer-2.3.5.gem
+- vendor/cache/actionpack-2.3.5.gem
+- vendor/cache/activerecord-2.3.5.gem
+- vendor/cache/activeresource-2.3.5.gem
+- vendor/cache/activesupport-2.3.5.gem
+- vendor/cache/autotest-4.2.7.gem
+- vendor/cache/autotest-fsevent-0.2.1.gem
+- vendor/cache/autotest-growl-0.2.0.gem
+- vendor/cache/bundler-0.9.7.gem
+- vendor/cache/classifier-1.3.1.gem
+- vendor/cache/directory_watcher-1.3.1.gem
+- vendor/cache/fastthread-1.0.7.gem
+- vendor/cache/garb-0.7.0.gem
+- vendor/cache/happymapper-0.3.0.gem
+- vendor/cache/jekyll-0.5.7.gem
+- vendor/cache/libxml-ruby-1.1.3.gem
+- vendor/cache/liquid-2.0.0.gem
+- vendor/cache/maruku-0.6.0.gem
+- vendor/cache/mocha-0.9.8.gem
+- vendor/cache/open4-1.0.1.gem
+- vendor/cache/passenger-2.2.9.gem
+- vendor/cache/rack-1.0.1.gem
+- vendor/cache/rails-2.3.5.gem
+- vendor/cache/rake-0.8.7.gem
+- vendor/cache/RedCloth-4.2.2.gem
+- vendor/cache/rubygems-update-1.3.5.gem
+- vendor/cache/shoulda-2.10.3.gem
+- vendor/cache/sqlite3-ruby-1.2.5.gem
+- vendor/cache/stemmer-1.0.1.gem
+- vendor/cache/syntax-1.0.0.gem
+- vendor/cache/sys-uname-0.8.4.gem
+- vendor/cache/timecop-0.3.4.gem
+- vendor/redis-rb/bench.rb
+- vendor/redis-rb/benchmarking/suite.rb
+- vendor/redis-rb/benchmarking/worker.rb
+- vendor/redis-rb/bin/distredis
+- vendor/redis-rb/examples/basic.rb
+- vendor/redis-rb/examples/incr-decr.rb
+- vendor/redis-rb/examples/list.rb
+- vendor/redis-rb/examples/sets.rb
+- vendor/redis-rb/lib/dist_redis.rb
+- vendor/redis-rb/lib/hash_ring.rb
+- vendor/redis-rb/lib/pipeline.rb
+- vendor/redis-rb/lib/redis/raketasks.rb
+- vendor/redis-rb/lib/redis.rb
+- vendor/redis-rb/LICENSE
+- vendor/redis-rb/profile.rb
+- vendor/redis-rb/Rakefile
+- vendor/redis-rb/README.markdown
+- vendor/redis-rb/redis-rb.gemspec
+- vendor/redis-rb/spec/redis_spec.rb
+- vendor/redis-rb/spec/spec_helper.rb
+- vendor/redis-rb/speed.rb
+- vendor/redis-rb/tasks/redis.tasks.rb
+- test/ab_test_test.rb
+- test/experiment_test.rb
+- test/experiments/age_and_zipcode.rb
+- test/experiments/metrics/cheers.rb
+- test/experiments/metrics/signups.rb
+- test/experiments/metrics/yawns.rb
+- test/experiments/null_abc.rb
+- test/metric_test.rb
+- test/myapp/app/controllers/application_controller.rb
+- test/myapp/app/controllers/main_controller.rb
+- test/myapp/config/boot.rb
+- test/myapp/config/environment.rb
+- test/myapp/config/environments/production.rb
+- test/myapp/config/routes.rb
+- test/myapp/log/production.log
+- test/passenger_test.rb
+- test/playground_test.rb
+- test/rails_test.rb
+- test/test_helper.rb
+- CHANGELOG
+- MIT-LICENSE
+- README.rdoc
+- Rakefile
+- Gemfile
+- vanity.gemspec
+has_rdoc: true
+homepage: http://vanity.labnotes.org
+licenses: []
+
+post_install_message: To get started run vanity --help
+rdoc_options: 
+- --title
+- Vanity 1.3.0
+- --main
+- README.rdoc
+- --webcvs
+- http://github.com/assaf/vanity
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.6
+signing_key: 
+specification_version: 3
+summary: Experience Driven Development framework for Rails
+test_files: []
+

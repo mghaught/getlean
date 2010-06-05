@@ -1,0 +1,2 @@
+module FlingsHelper
+end

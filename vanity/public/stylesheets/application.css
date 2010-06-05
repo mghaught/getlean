@@ -1,0 +1,194 @@
+body {
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
+
+form p {
+  margin-bottom: 8px;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+#float { 
+	width: 800px;
+	margin: 0 auto;
+	text-align: left;
+} 
+
+#header { 
+  margin-top: 10px;
+  margin-bottom: 50px;
+	height: 60px;
+} 
+
+#logo {
+  float: left;
+  width: 300px;
+  height: 120px;
+  background: url(/images/fling-left.png) no-repeat 130px 0;
+}
+#logo h1{
+  margin-top: 40px;
+}
+#logo a {
+  text-decoration: none;
+  color: #00f;
+}
+
+#user_info{
+  margin-top: 30px;
+  float: right;
+  width: 240px;
+  padding-left: 20px;
+}
+
+
+#container {
+  clear: both;
+  padding: 10px;
+}
+
+#footer {
+  clear: both;
+  float: left;
+  padding: 10px;
+  margin-top: 80px;
+}
+
+.fling_button {
+  margin-top: 50px;
+  margin-left: 200px;
+  border: blue 2px solid;
+  float: left;
+  padding: 10px;
+}
+.fling_button a {
+  font-size: 3em;
+  font-weight: bold;
+  text-decoration: none;
+}
+.rightside {
+  float: right;
+  width: 320px;
+}
+
+.payload {
+  width: 500px;
+  margin-bottom: 20px;
+}
+.payload ul { 
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.payload ul li {
+  float: left;
+  padding: 4px 12px;
+  width: 220px;
+  font-weight: bold;
+}
+
+.payload .image{
+  float: right;
+  position: relative;
+  top: -12px;
+  height: 80px;
+  width: 80px;
+}
+
+form .right {
+  width: 400px;
+  text-align: right;
+}
+
+/*form .right input[type=text] {
+  width: 200px;
+}*/
+
+.fling_result {
+  font-size: 32px;
+  color: green;
+}
+
+.fling_result .image {
+  width: 600px;
+  height: 180px;
+  background: url(/images/spoon-flung.png) no-repeat 0 0;
+}
+
+.fling_result .image img{
+  margin-left: 340px;
+  margin-top: 30px;
+}
+
+.fling_back {
+  margin-top: 30px;
+  margin-left: 200px;
+}
+
+/* Message styles */
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+#errorExplanation ul {
+  margin: 2px 24px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: disc;
+}
+.clear {
+  clear: both;
+}
+
+

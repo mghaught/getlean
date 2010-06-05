@@ -1,0 +1,159 @@
+== 1.3.0 (2010-03-01)
+This release adds support for Google Analytics, AdWords and forking servers (Passenger, Unicorn).
+
+To view Google Analytics metrics from within Vanity, first make sure you are using Garb.  For example, in your Gemfile:
+
+  gem "vanity", "1.3.0"
+  gem "garb",   "0.5.0" 
+
+Next, authenticate using your account credentials.  For example, in your config/environments/production.rb:
+
+  require "garb"
+	Garb::Session.login('..email..', '..password..', account_type: "GOOGLE") rescue nil
+
+Last, define Vanity metrics that tap to Google Analytics metrics.  For example:
+
+  metric "Acquisition: Visitors" do
+    description "Unique visitors on any given page, as tracked by Google Analytics"
+    google_analytics "UA-1828623-6", :visitors
+  end
+
+* Added: Support for Google Analytics metrics, thanks to Tony Pitale's Garb and blog post: http://www.viget.com/extend/user-goal-tracking-in-rails-with-vanity-and-google-analytics/
+* Added: Vanity query parameter that you can use to choose a particular alternative, e.g. to tie an advertisement banner with content of the site.
+* Added: Command line "vanity list" catalogs all ongoing experiments, their alternatives (and fingerprints) and all metrics.
+* Added: Playground.reconnect!, particularly useful when forking (Passenger, Unicorn, etc).
+* Added: Vanity loads Redis configuration from config/redis.yml (if you have such a file).
+* Changed: New way to specify connection configuration: Vanity.playground.redis = "localhost:6379". Use this instead of the separate host/port/db attribute.
+* Changed: Rails integration now separates use_vanity method, filters and helpers.
+* Changed: Explicit vanity_context_filter and vanity_reload_filter so you can skip them, or order filters relative to them.
+* Fixed: If metric cannot be loaded (e.g. offline, no db access) show error message for that metric but don't break dashboard.
+* Fixed: AbTest incorrectly calls identify method instead of identity (issue #2)
+* Fixed: Running vanity command, automatically detects and loads Rails.
+* Fixed: Vanity now picks up on load_path set from within config/environment.rb.
+* Removed: Vanity.playground.define is deprecated. Bad choice for a method name. If you need this feature, make a suggestion and let's create a better API.
+
+== 1.2.0 (2009-12-14)
+This release introduces metrics backed by ActiveRecord.  Use them when your model is already tracking a metric, and you get instant historical data.
+
+Example, track sign ups using User model:
+
+  metric "Signups" do
+    model Account
+  end
+
+Example, track satisfaction using Survey model:
+  metric "Satisfaction" do
+    model Survey, :average=>:rating
+  end
+
+Example, track only high ratings:
+  metric "High ratings" do
+    model Rating, :conditions=>["stars >= 4"]
+  end
+
+There's no need to call track! on these metrics.
+
+* Added: Metrics backed by ActiveRecord.
+* Added: track! and ab_test methods now available from Object (i.e. everywhere).
+* Added: Playground.load!. Now loading all metrics and experiments from Rails initializer.
+* Changed: Decoupled metric name from identifier.  You can now define a metric with more descriptive name, e.g. "Cheers per second (user satisfaction)" and keep their ID simple.  Identifier is matched against the file name (for metrics loaded from experiments/metrics).
+* Changed: Metrics no longer defined on-demand, i.e. calling playground.metric either returns existing metric or raises exception.
+* Changed: Playground.experiments returns hash instead of array.
+* Changed: All dates in report are UTC, since we don't know which locale to use.
+* Removed: Object.experiment is deprecated, please call Vanity.playground.experiment directly.
+* Fixed: Playground no longer changes logging level on supplied logger.
+
+== 1.1.1 (2009-12-4)
+* Fixed: Binding issue that shows up on 1.8.6/7.
+
+== 1.1.0 (2009-12-4)
+This release introduces metrics.  Metrics are the gateway drug to better software.
+
+It’s as simple as defining a metric:
+
+	metric "Cheers" do
+		description "They love us, don't they?"
+	end
+
+Tracking it from your code:
+
+	track! :cheers
+
+And watching the graph from the Dashboard.
+
+You can (should) also use metrics with your A/B tests, for example:
+
+  ab_test "Pricing options" do
+	  metrics :signup
+		alternatives 15, 25, 29
+	end
+
+This new usage may become requirement in a future release.
+
+Much thanks to Ian Sefferman for fixing issues with Ruby 1.8.7 and Rails support.
+
+* Added: Metrics.
+* Added: Use Vanity.playground.mock! when running tests and you'd rather not access a live Redis server.
+* Changed: A/B tests now using metrics for tracking.
+* Changed: Now throwing NameError instead of LoadError when failing to load experiment/metric.  NameError can be rescued on same line. 
+* Changed: New, easier URL mapping for Dashboard: map.vanity "/vanity", :controller=>:vanity.
+* Changed: All tests are green on Ruby 1.8.6, 1.8.7 and 1.9.1.
+* Changed: Switched to redis-rb from http://github.com/ezmobius/redis-rb.
+* Deprecated: Please call experiment method with experiment identifier (a symbol) and not experiment name.
+
+== 1.0.0 (2009-11-19)
+This release changes the way you define a new experiment.  You can use a method suitable for the type of experiment you want to define, or call the generic define method (previously: experiment method).  For example:
+
+  ab_test "My A/B test" do
+	  alternatives :a, :b
+	end
+
+The experiment method is no longer overloaded: it looks up an experiment (loading its definition if necessary), but does not define an experiment.  The ab_test method is overloaded, though this may change in the future.
+
+In addition, the ab_goal! method is now track!.  This method may be used for other tests in the future.
+
+* Added: A/B test report now showing number of participants.
+* Added: AbTest.score method accepts minimum probability (default 90), and
+* Removed: Experiment.reset! method. Destroy and save have the same effect.
+* Changed: Playground.define now requires an experiment type, ab_test is not the default any more.
+* Changed: When you run Vanity in development mode (configuration.cache_classes = false), it will reload experiments on each request. You can also Vanity.playground.reload!.
+* Changed: Fancy AJAX trickery in Rails console.
+* Changed: You can break long experiment descriptions into multiple paragraphs using two consecutive newlines.
+* Changed: AbTest confidence becomes probability; only returns choice alternative with probability equal or higher than that.
+* Changed: ab_goal! becomes track!.
+* Changed: Console becomes Dashboard, which is less confusing with rails console (script/console).
+
+== 0.3.1 (2009-11-13)
+* Changed: Redis 1.0 is now vendored into Vanity. This means one less dependecy ... actually two, since Redis brings with it RSpec.
+
+== 0.3.0 (2009-11-13)
+* Added: score now includes least performing alternatives, names and values.
+* Added: shiny reports.
+* Added: Rails console shows current experiments status and also allows you to choose which alternative you want to see.
+* Changed: letters instead of numbers for options (option 1 => option A).
+* Changed: experiment.alternatives is now an immutable snapshot.
+* Changed: experiment.score returns populated alternative objects instead of structs.
+* Changed: experiment.chooses uses Redis to store state, better for (when we get to) browser integration.
+* Changed: experiment.chooses skips recording participant or conversion.
+* Changed: to MIT license.
+
+== 0.2.2 (2009-11-12)
+* Added: vanity binary, with single command for generating a report.
+* Added: return alternative by value from experiment.alternative(val) method.
+* Added: reset an experiment by calling reset!.
+* Added: experiment alternative name (option 1, option 2, etc).
+* Added: new scoring algorithm: use experiment.score instead of alternative.z_score/confidence.
+* Added: experiment.conclusion for plain English results.
+
+== 0.2.1 (2009-11-11)
+* Added: z-score and confidence level for A/B test alternatives.
+* Added: test auto-completion and auto-outcome (complete_it, outcome_is).
+* Changed: default alternatives are now false/true, so if can't decide outcome, fall back on false.
+
+== 0.2.0 (2009-11-10)
+* Added: experiment method on object, used to define and access experiments.
+* Added: playground configuration (Vanity.playground.namespace = , etc).
+* Added: use_vanity now accepts block instead of symbol.
+* Changed: Vanity::Helpers becomes Vanity::Rails.
+* Changed: A/B test experiments alternatives now handled using Alternatives object.
+* Removed: A/B test measure method no longer in use.
