@@ -21,13 +21,13 @@ Marty Haught
 
 * Focusing on Value
   * defining success
-  * reducing waste
+  * minimum viable product
   * learning process
  
 * Minimizing Effort
   * simplicity
   * delay commitment
-  * minimum viable product
+  * reducing waste
  
 * Measuring
   * actionable metrics
@@ -36,7 +36,6 @@ Marty Haught
 * Delivering Fast
   * small batches
   * kanban
-  * automation
   * continuous deployment
   * role of testing
 
@@ -53,4 +52,7 @@ You may want to do some reading beforehand if this subject is new to you.  This 
 
 * [Mary Poppendieck](http://www.poppendieck.com/)
 * [Eric Ries](http://www.startuplessonslearned.com/)
+* [Steve Blank](http://steveblank.com/)
+* [CustDev](http://www.custdev.com/)
+* [Dave McClure](http://500hats.typepad.com/)
 * [Kanban](http://www.limitedwipsociety.org/)
