@@ -23,7 +23,7 @@ Add to application_controller.rb
   use_vanity :current_user
 
 
-3. Install dashboard
+3. Install dashboard (optional)
 
 Add route in routes.rb
 
