@@ -1,7 +1,7 @@
 <div class="fling_result">
-  <%= @fling.flinger.name %> flung <%= @fling.payload.name %> at <%= @fling.target_name %>
+  <%=h @fling.flinger.name %> flung <%= @fling.payload.name %> at <%=h @fling.target_name %>
   <% unless @fling.message.blank? %>
-    saying <%= @fling.message %>
+    saying <%=h @fling.message %>
   <% end %>
   
   <div class="image">
